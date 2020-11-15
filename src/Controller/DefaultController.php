@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Cookie;
 use App\Entity\User;
 use App\Services\GiftsService;
 
@@ -46,6 +47,40 @@ class DefaultController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
         return new Response("Add User Success!");
+    }
+
+    /**
+     * Set Cookie
+     * 
+     * @Route("/default/cookie", name="default_cookie")
+     */
+    public function setCookie()
+    {
+        $cookie = new Cookie(
+            "my_cookie",    // Cookie name
+            "cookie value", // Cookie value
+            time() + (2 * 365 * 24 * 60 * 60)   // Expires after 2 years
+        );
+
+        $res = new Response();
+        $res->headers->setCookie($cookie);
+        $res->send();
+
+        return new Response("Cookie set");
+    }
+
+    /**
+     * Clear Cookie
+     * 
+     * @Route("/default/clear_cookie", name="default_clear_cookie")
+     */
+    public function clearCookie()
+    {
+        $res = new Response();
+        $res->headers->clearCookie('my_cookie');
+        $res->send();
+
+        return new Response("Cookie Cleared!");
     }
 
     /**
