@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Services\GiftsService;
 
@@ -52,7 +54,7 @@ class DefaultController extends AbstractController
     /**
      * Set Cookie
      * 
-     * @Route("/default/cookie", name="default_cookie")
+     * @Route("/default/set_cookie", name="default_cookie")
      */
     public function setCookie()
     {
@@ -81,6 +83,17 @@ class DefaultController extends AbstractController
         $res->send();
 
         return new Response("Cookie Cleared!");
+    }
+
+    /**
+     * Get Cookie Data
+     * 
+     * @Route("/default/cookie", name="default_set_cookie")
+     */
+    public function getCookie(Request $request)
+    {
+        $cookie = $request->cookies->get("my_cookie");
+        return new Response($cookie);
     }
 
     /**
