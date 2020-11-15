@@ -15,6 +15,7 @@ Symfony Command:
 - Create migration: php bin/console make:migration
 - Excute migration: php bin/console doctrine:migration:migrate
 - Create Database: php bin/console doctrine:database:create
+- List Services: php bin/console debug:container
 
 Package List:
 
@@ -23,3 +24,4 @@ Package List:
 - Database package: doctrine/orm, doctrine/doctrine-bundle, migration
 - Doctrine Package:
   - doctrine/annotations
+- Log package: logger
