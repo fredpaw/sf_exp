@@ -59,6 +59,48 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * Advanced Route
+     * 
+     * @Route("/default/blog/{page?}", name="default_blog_list", requirements={"page"="\d+"})
+     */
+    public function blog(): Response
+    {
+        return new Response("Optional parameters in url and requirements for parameters");
+    }
+
+    /**
+     * Advanced Route
+     * 
+     * @Route(
+     *  "/default/articles/{locale}/{year}/{slug}/{category}",
+     *  name="default_article",
+     *  defaults={"category": "computers"},
+     *  requirements={
+     *      "_locale": "en|fr",
+     *      "category": "computers|rtv",
+     *      "year": "\d+",
+     *  }
+     * )
+     */
+    public function article()
+    {
+        return new Response("An advanced route example");
+    }
+
+    /**
+     * Advanced Route
+     * 
+     * @Route({
+     *      "nl": "/default/over-ons",
+     *      "en": "/default/about-us"
+     * }, name="default_about_us")
+     */
+    public function about()
+    {
+        return new Response("Translated Routes");
+    }
+
+    /**
      * Redirect to named routes
      * 
      * @Route("/default/redirectroutes", name="default_redirect_routes")
