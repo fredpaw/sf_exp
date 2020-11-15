@@ -101,6 +101,26 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * Flash Message
+     * 
+     * @Route("/default/flash", name="default_flash")
+     */
+    public function flash()
+    {
+        $this->addFlash(
+            "notice",
+            "Your changes were saved!"
+        );
+
+        $this->addFlash(
+            "warning",
+            "Your changes were saved!"
+        );
+
+        return $this->render("default/flash.html.twig");
+    }
+
+    /**
      * Redirect to named routes
      * 
      * @Route("/default/redirectroutes", name="default_redirect_routes")
