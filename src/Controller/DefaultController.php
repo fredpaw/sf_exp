@@ -97,6 +97,22 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * Session
+     * 
+     * @Route("/default/session", name="default_session")
+     */
+    public function setSession(SessionInterface $session)
+    {
+        $session->set('name', 'session value');
+        if($session->has('name'))
+        {
+            exit($session->get('name'));
+        }
+        // $session->remove('name');
+        // $session->clear();
+    }
+
+    /**
      * Redirect
      * 
      * @Route("/default/redirect", name="default_redirect")
