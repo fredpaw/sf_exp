@@ -16,11 +16,12 @@ Symfony Command:
 - Excute migration: php bin/console doctrine:migration:migrate
 - Create Database: php bin/console doctrine:database:create
 - List Services: php bin/console debug:container
+- Clear cache: php bin/console cache:clear
 
 Package List:
 
 - Generate Command Package: symfony/maker-bundle --dev
-- Template Package: twig
+- Template Package: twig, symfony/twig-pack
 - Database package: doctrine/orm, doctrine/doctrine-bundle, migration
 - Doctrine Package:
   - doctrine/annotations
