@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use App\Entity\User;
 use App\Services\GiftsService;
 
@@ -28,6 +29,11 @@ class DefaultController extends AbstractController
         //     'path' => 'src/Controller/DefaultController.php',
         // ]);
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+
+        // if($users)
+        // {
+        //     throw $this->createNotFoundException("The users do not exist");
+        // }
 
         return $this->render('default/index.html.twig', [
             'controller_name' => 'DefaultController',
