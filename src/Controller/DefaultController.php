@@ -113,6 +113,18 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * @Route("/default/get", name="default_get")
+     */
+    public function getMethod(Request $request)
+    {
+        exit($request->query->get('page', 'default'));  // get query data
+        exit($request->server->get('HTTP_HOST'));   // display server data
+        $request->isXmlHttpRequest();   // is it an Ajax request?
+        $request->request->get('page'); // get post data using request
+        $request->files->get('foo');    // get upload file
+    }
+
+    /**
      * Redirect
      * 
      * @Route("/default/redirect", name="default_redirect")
