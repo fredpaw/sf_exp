@@ -10,7 +10,7 @@ use App\Services\GiftsService;
 
 class DefaultController extends AbstractController
 {
-    public function __construct(GiftsService $gifts)
+    public function __construct(GiftsService $gifts, $logger)
     {
         $gifts->gifts = ['a', 'b', 'c', 'd'];
     }
